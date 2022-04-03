@@ -18,6 +18,7 @@ class CalendarViewModel: ObservableObject{
     @Published var datePressed: Date = Date()
     @Published var weekdays: [Date] = [Date]()
     @Published var items: [TaskAndStatus] = [TaskAndStatus]()
+    @Published var todaysItems: [TaskAndStatus] = [TaskAndStatus]()
     
     
     /// Use Date formatter on some Date Object
@@ -50,6 +51,7 @@ class CalendarViewModel: ObservableObject{
     /// - Parameter date: Date
     /// - Returns: [TaskAndStatus]
     func getItemsForDatePressed(date: Date) -> [TaskAndStatus]{
+        //Get Values from a date from CoreDataLayer
         return [
             TaskAndStatus(task: convertDateFormatter(date: datePressed, format: "YYYY MM dd"), completion: true),
             TaskAndStatus(task: "Water", completion: false),
@@ -58,6 +60,11 @@ class CalendarViewModel: ObservableObject{
         
     }
 
+    
+    /// Get the Items for the Current Day and Display it on the Home Page
+    func getTodaysItems(){
+        todaysItems = getItemsForDatePressed(date: Date())
+    }
     
     // UPDATE Published Values
     enum DateChanges {

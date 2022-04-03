@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		B536BEE627F7A60A007283C0 /* DisplayDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEE527F7A60A007283C0 /* DisplayDate.swift */; };
 		B536BEEA27F8D638007283C0 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEE927F8D638007283C0 /* CalendarViewModel.swift */; };
+		B536BEEC27F90453007283C0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEEB27F90453007283C0 /* Home.swift */; };
+		B536BEEE27F90639007283C0 /* ListOfItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEED27F90639007283C0 /* ListOfItems.swift */; };
+		B536BEF027F90A0F007283C0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEEF27F90A0F007283C0 /* HomeViewModel.swift */; };
+		B536BEF327F90E4C007283C0 /* SeeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF227F90E4C007283C0 /* SeeText.swift */; };
+		B536BEF827F95B87007283C0 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF627F95B87007283C0 /* Database.xcdatamodeld */; };
+		B536BEFA27F95D83007283C0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF927F95D83007283C0 /* CoreDataManager.swift */; };
 		B56B7EAB27F6C6FE00D1E2AD /* checklist3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */; };
 		B56B7EAD27F6C6FE00D1E2AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */; };
 		B56B7EAF27F6C70000D1E2AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56B7EAE27F6C70000D1E2AD /* Assets.xcassets */; };
@@ -40,6 +46,12 @@
 /* Begin PBXFileReference section */
 		B536BEE527F7A60A007283C0 /* DisplayDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDate.swift; sourceTree = "<group>"; };
 		B536BEE927F8D638007283C0 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		B536BEEB27F90453007283C0 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		B536BEED27F90639007283C0 /* ListOfItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfItems.swift; sourceTree = "<group>"; };
+		B536BEEF27F90A0F007283C0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B536BEF227F90E4C007283C0 /* SeeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeText.swift; sourceTree = "<group>"; };
+		B536BEF727F95B87007283C0 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		B536BEF927F95D83007283C0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B56B7EA727F6C6FE00D1E2AD /* checklist3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checklist3App.swift; sourceTree = "<group>"; };
 		B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +91,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B536BEF127F90A33007283C0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B536BEE927F8D638007283C0 /* CalendarViewModel.swift */,
+				B536BEEF27F90A0F007283C0 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B536BEF427F90F3A007283C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B536BEEB27F90453007283C0 /* Home.swift */,
+				B56B7ED427F6C71100D1E2AD /* CalendarNavBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B536BEF527F90F5A007283C0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B56B7ED627F6C84700D1E2AD /* showDate.swift */,
+				B536BEF227F90E4C007283C0 /* SeeText.swift */,
+				B536BEE527F7A60A007283C0 /* DisplayDate.swift */,
+				B536BEED27F90639007283C0 /* ListOfItems.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B56B7E9E27F6C6FE00D1E2AD = {
 			isa = PBXGroup;
 			children = (
@@ -102,14 +143,15 @@
 		B56B7EA927F6C6FE00D1E2AD /* checklist3 */ = {
 			isa = PBXGroup;
 			children = (
+				B536BEF527F90F5A007283C0 /* Components */,
+				B536BEF427F90F3A007283C0 /* View */,
+				B536BEF127F90A33007283C0 /* ViewModels */,
+				B56B7EAE27F6C70000D1E2AD /* Assets.xcassets */,
 				B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */,
 				B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */,
-				B56B7EAE27F6C70000D1E2AD /* Assets.xcassets */,
 				B56B7EB027F6C70000D1E2AD /* Preview Content */,
-				B56B7ED427F6C71100D1E2AD /* CalendarNavBar.swift */,
-				B536BEE927F8D638007283C0 /* CalendarViewModel.swift */,
-				B56B7ED627F6C84700D1E2AD /* showDate.swift */,
-				B536BEE527F7A60A007283C0 /* DisplayDate.swift */,
+				B536BEF627F95B87007283C0 /* Database.xcdatamodeld */,
+				B536BEF927F95D83007283C0 /* CoreDataManager.swift */,
 			);
 			path = checklist3;
 			sourceTree = "<group>";
@@ -270,11 +312,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B536BEEA27F8D638007283C0 /* CalendarViewModel.swift in Sources */,
+				B536BEF027F90A0F007283C0 /* HomeViewModel.swift in Sources */,
 				B56B7ED727F6C84700D1E2AD /* showDate.swift in Sources */,
 				B56B7EAD27F6C6FE00D1E2AD /* ContentView.swift in Sources */,
 				B56B7ED527F6C71100D1E2AD /* CalendarNavBar.swift in Sources */,
+				B536BEF827F95B87007283C0 /* Database.xcdatamodeld in Sources */,
+				B536BEFA27F95D83007283C0 /* CoreDataManager.swift in Sources */,
 				B56B7EAB27F6C6FE00D1E2AD /* checklist3App.swift in Sources */,
+				B536BEF327F90E4C007283C0 /* SeeText.swift in Sources */,
 				B536BEE627F7A60A007283C0 /* DisplayDate.swift in Sources */,
+				B536BEEC27F90453007283C0 /* Home.swift in Sources */,
+				B536BEEE27F90639007283C0 /* ListOfItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +647,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B536BEF627F95B87007283C0 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B536BEF727F95B87007283C0 /* Database.xcdatamodel */,
+			);
+			currentVersion = B536BEF727F95B87007283C0 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B56B7E9F27F6C6FE00D1E2AD /* Project object */;
 }

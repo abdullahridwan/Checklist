@@ -10,10 +10,7 @@ import SwiftUI
 struct CalendarNavBar: View {
     @StateObject var cvm: CalendarViewModel = CalendarViewModel()
     var sevenColumnGrid: [GridItem] = Array(repeating: .init(.flexible()), count: 7)
-//    @State var counter: Int = 0
-//    @State var datePressed: Date = Date()
-//    @State var weekDays: [Date] = [Date]()
-//    @State var items: [TaskAndStatus] = [TaskAndStatus]()
+
 
     var body: some View {
         NavigationView {
@@ -35,6 +32,7 @@ struct CalendarNavBar: View {
                             Image(systemName: "chevron.right")
                         })
                     }
+                    .padding(.horizontal)
                     
                     LazyVGrid(columns: sevenColumnGrid, spacing: 10){
                         ForEach(cvm.weekdays, id: \.self){dateObject in
@@ -42,26 +40,15 @@ struct CalendarNavBar: View {
                         }
                     }
                     
-                    List{
-                        ForEach(0..<cvm.items.count, id:\.self){index in
-                            TextField("Write an item...", text: $cvm.items[index].task)
-                        }
-                        .onMove { indexSet, offset in
-                            cvm.items.move(fromOffsets: indexSet, toOffset: offset)
-                            //should resave items in that order
-                        }
-                        .onDelete { indexSet in
-                            cvm.items.remove(atOffsets: indexSet)
-                            //resave items for that day?
-                        }
-                    }
+                    ListOfItems(items: $cvm.items)
+
                 }
                 .padding(.top, 20)
                 .padding(.horizontal)
                 .navigationTitle("This Weeks Items")
                 .onAppear(perform: {
-                    UITableView.appearance().backgroundColor = UIColor.clear
-                    UITableViewCell.appearance().backgroundColor = UIColor.clear
+//                    UITableView.appearance().backgroundColor = UIColor.clear
+//                    UITableViewCell.appearance().backgroundColor = UIColor.clear
                     cvm.updateWeekdays()
                     cvm.updateItems()
                 })
