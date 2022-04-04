@@ -54,7 +54,7 @@
 		B536BEF727F95B87007283C0 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		B536BEF927F95D83007283C0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B536BEFB27FA2842007283C0 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
-		B562729A27FB947D00A9A13F /* Article.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Article.md; sourceTree = "<group>"; };
+		B562729B27FB96A300A9A13F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B56B7EA727F6C6FE00D1E2AD /* checklist3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checklist3App.swift; sourceTree = "<group>"; };
 		B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		B56B7E9E27F6C6FE00D1E2AD = {
 			isa = PBXGroup;
 			children = (
-				B562729A27FB947D00A9A13F /* Article.md */,
+				B562729B27FB96A300A9A13F /* README.md */,
 				B56B7EA927F6C6FE00D1E2AD /* checklist3 */,
 				B56B7EBA27F6C70000D1E2AD /* checklist3Tests */,
 				B56B7EC427F6C70000D1E2AD /* checklist3UITests */,
