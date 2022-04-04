@@ -126,6 +126,7 @@
 		B56B7E9E27F6C6FE00D1E2AD = {
 			isa = PBXGroup;
 			children = (
+				B562729A27FB947D00A9A13F /* Article.md */,
 				B56B7EA927F6C6FE00D1E2AD /* checklist3 */,
 				B56B7EBA27F6C70000D1E2AD /* checklist3Tests */,
 				B56B7EC427F6C70000D1E2AD /* checklist3UITests */,
@@ -156,7 +157,6 @@
 				B536BEF627F95B87007283C0 /* Database.xcdatamodeld */,
 				B536BEF927F95D83007283C0 /* CoreDataManager.swift */,
 				B536BEFB27FA2842007283C0 /* ChecklistViewModel.swift */,
-				B562729A27FB947D00A9A13F /* Article.md */,
 			);
 			path = checklist3;
 			sourceTree = "<group>";
