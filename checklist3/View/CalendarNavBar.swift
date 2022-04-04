@@ -52,6 +52,9 @@ struct CalendarNavBar: View {
                     cvm.updateWeekdays()
                     cvm.updateItems()
                 })
+                .onChange(of: cvm.items, perform: {newItems in
+                    cvm.save()
+                })
                 .onChange(of: cvm.datePressed, perform: {newDate in
                     cvm.updateItems()
                     cvm.updateWeekdays()
@@ -62,6 +65,14 @@ struct CalendarNavBar: View {
                             cvm.updateScreen(change: .reset)
                         }, label: {
                             Image(systemName: "house")
+                        })
+                    })
+                    ToolbarItem(placement: .navigationBarLeading, content: {
+                        Button(action: {
+                            print("Items are", cvm.items)
+                            print("Date Pressed is", cvm.datePressed)
+                        }, label: {
+                            Image(systemName: "pencil.circle")
                         })
                     })
                     ToolbarItem(placement: .navigationBarTrailing, content: {

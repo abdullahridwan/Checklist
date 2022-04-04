@@ -27,14 +27,15 @@ class CoreDataManager: ObservableObject{
         allDateDatums = getAllDateDatum()
     }
     
+
     
-//    func getToDoByID(tid: NSManagedObjectID) -> InfoModel? {
-//        do{
-//            return try viewContext.existingObject(with: tid) as? InfoModel
-//        } catch {
-//            return nil
-//        }
-//    }
+    func save(){
+        do{
+            try viewContext.save()
+        } catch {
+            viewContext.rollback()
+        }
+    }
     
     
     func getAllDateDatum() -> [DateDatum]{
@@ -51,10 +52,14 @@ class CoreDataManager: ObservableObject{
         return dateDatum.tasks?.allObjects as! [TaskDatum]
     }
     
-    func createTaskDatum(){}
-    func createDateDatum(){}
+    func createTaskDatum(newTD: TaskDatum){
+        save()
+    }
+    func createDateDatum(newDD: DateDatum){
+        save()
+    }
     
-    func updateTaskDatum(){}
+    func updateTaskDatum(td: TaskDatum){}
     func updateDateDatum(){}
     
     func deleteTaskDatum(){}

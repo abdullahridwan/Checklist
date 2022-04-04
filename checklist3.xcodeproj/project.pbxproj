@@ -15,6 +15,7 @@
 		B536BEF327F90E4C007283C0 /* SeeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF227F90E4C007283C0 /* SeeText.swift */; };
 		B536BEF827F95B87007283C0 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF627F95B87007283C0 /* Database.xcdatamodeld */; };
 		B536BEFA27F95D83007283C0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEF927F95D83007283C0 /* CoreDataManager.swift */; };
+		B536BEFC27FA2842007283C0 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536BEFB27FA2842007283C0 /* ChecklistViewModel.swift */; };
 		B56B7EAB27F6C6FE00D1E2AD /* checklist3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */; };
 		B56B7EAD27F6C6FE00D1E2AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */; };
 		B56B7EAF27F6C70000D1E2AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56B7EAE27F6C70000D1E2AD /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		B536BEF227F90E4C007283C0 /* SeeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeText.swift; sourceTree = "<group>"; };
 		B536BEF727F95B87007283C0 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		B536BEF927F95D83007283C0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B536BEFB27FA2842007283C0 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		B56B7EA727F6C6FE00D1E2AD /* checklist3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56B7EAA27F6C6FE00D1E2AD /* checklist3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checklist3App.swift; sourceTree = "<group>"; };
 		B56B7EAC27F6C6FE00D1E2AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				B56B7EB027F6C70000D1E2AD /* Preview Content */,
 				B536BEF627F95B87007283C0 /* Database.xcdatamodeld */,
 				B536BEF927F95D83007283C0 /* CoreDataManager.swift */,
+				B536BEFB27FA2842007283C0 /* ChecklistViewModel.swift */,
 			);
 			path = checklist3;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				B536BEF027F90A0F007283C0 /* HomeViewModel.swift in Sources */,
 				B56B7ED727F6C84700D1E2AD /* showDate.swift in Sources */,
 				B56B7EAD27F6C6FE00D1E2AD /* ContentView.swift in Sources */,
+				B536BEFC27FA2842007283C0 /* ChecklistViewModel.swift in Sources */,
 				B56B7ED527F6C71100D1E2AD /* CalendarNavBar.swift in Sources */,
 				B536BEF827F95B87007283C0 /* Database.xcdatamodeld in Sources */,
 				B536BEFA27F95D83007283C0 /* CoreDataManager.swift in Sources */,

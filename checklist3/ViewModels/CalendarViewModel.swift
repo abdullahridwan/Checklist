@@ -15,6 +15,7 @@ struct TaskAndStatus: Hashable {
 
 class CalendarViewModel: ObservableObject{
     var counter: Int = 0
+    let clvm: ChecklistViewModel = ChecklistViewModel()
     @Published var datePressed: Date = Date()
     @Published var weekdays: [Date] = [Date]()
     @Published var items: [TaskAndStatus] = [TaskAndStatus]()
@@ -52,11 +53,12 @@ class CalendarViewModel: ObservableObject{
     /// - Returns: [TaskAndStatus]
     func getItemsForDatePressed(date: Date) -> [TaskAndStatus]{
         //Get Values from a date from CoreDataLayer
-        return [
-            TaskAndStatus(task: convertDateFormatter(date: datePressed, format: "YYYY MM dd"), completion: true),
-            TaskAndStatus(task: "Water", completion: false),
-            TaskAndStatus(task: "Protein", completion: false)
-        ]
+        return clvm.getTasksFromDate(date: date)
+//        return [
+//            TaskAndStatus(task: convertDateFormatter(date: datePressed, format: "YYYY MM dd"), completion: true),
+//            TaskAndStatus(task: "Water", completion: false),
+//            TaskAndStatus(task: "Protein", completion: false)
+//        ]
         
     }
 
@@ -117,6 +119,11 @@ class CalendarViewModel: ObservableObject{
         }
         updateWeekdays()
         updateItems()
+    }
+    
+    /// Save the Items for that day onto the date Pressed
+    func save(){
+        clvm.createDateDatum(date: datePressed, tasks: items)
     }
     
 
