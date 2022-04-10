@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SeeText: View {
     @Binding var text: String
-    @State var fillCircle: Bool = false
+    @Binding var fillCircle: Bool
 
     var body: some View {
         HStack{
@@ -27,6 +27,6 @@ struct SeeText: View {
 
 struct SeeText_Previews: PreviewProvider {
     static var previews: some View {
-        SeeText(text: .constant("Some Item"))
+        SeeText(text: .constant("Some Item"), fillCircle: .constant(false))
     }
 }

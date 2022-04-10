@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalendarNavBar: View {
     @StateObject var cvm: CalendarViewModel = CalendarViewModel()
+    @State var itemsChanged: Bool = false
     
     var sevenColumnGrid: [GridItem] = Array(repeating: .init(.flexible()), count: 7)
 
@@ -36,12 +37,26 @@ struct CalendarNavBar: View {
                     .padding(.horizontal)
                     
                     LazyVGrid(columns: sevenColumnGrid, spacing: 10){
-                        ForEach(cvm.weekdays, id: \.self){dateObject in
-                            showDate(date: dateObject, datePressed: $cvm.datePressed)
+                        ForEach(cvm.weekdays, id: \.self){dateObj in
+                            showDate(date: dateObj, datePressed: $cvm.datePressed)
                         }
                     }
                     
                     ListOfItems(items: $cvm.items)
+                    
+                    Button(action: {
+                        cvm.updateDateAndValue(date: cvm.datePressed, items: cvm.items)
+                        cvm.originalItems = cvm.items
+                        itemsChanged = cvm.isDiffBtwnItems()
+                    }, label: {
+                        Text("Save").foregroundColor(Color.white)
+                    })
+                    .padding()
+                    .padding(.horizontal)
+                    .background(itemsChanged == false ? Color.blue : Color.red)
+                    .clipShape(Capsule())
+                    
+                    
 
                 }
                 .padding(.top, 20)
@@ -52,8 +67,7 @@ struct CalendarNavBar: View {
                     cvm.updateItems()
                 })
                 .onChange(of: cvm.items, perform: {newItems in
-                    cvm.updateDateAndValue(date: cvm.datePressed, items: cvm.items)
-                    cvm.save()
+                    itemsChanged = cvm.isDiffBtwnItems()
                 })
                 .onChange(of: cvm.datePressed, perform: {newDate in
                     cvm.updateItems()
@@ -63,23 +77,14 @@ struct CalendarNavBar: View {
                     ToolbarItem(placement: .navigationBarLeading, content: {
                         Button(action: {
                             cvm.updateScreen(change: .reset)
+                
                         }, label: {
                             Image(systemName: "house")
                         })
                     })
-                    ToolbarItem(placement: .navigationBarLeading, content: {
-                        Button(action: {
-                            print("Items are", cvm.items)
-                            print("Date Pressed is", cvm.datePressed)
-                        }, label: {
-                            Image(systemName: "pencil.circle")
-                        })
-                    })
                     ToolbarItem(placement: .navigationBarTrailing, content: {
                         Button(action: {
-                            print("Appending..")
-                            cvm.items.append(TaskAndStatus(task: "", completion: false))
-                            print("Appended")
+                            cvm.items.append(TaskAndStatus(task: "Write Something...", completion: false))
                             
                         }, label: {Image(systemName: "plus")})
                     })

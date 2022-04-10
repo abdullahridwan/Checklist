@@ -13,15 +13,13 @@ struct ListOfItems: View {
         List{
             ForEach(0..<items.count, id:\.self){index in
 //                TextField("Write an item...", text: $items[index].task)
-                SeeText(text: $items[index].task)
+                SeeText(text: $items[index].task, fillCircle: $items[index].completion)
             }
             .onMove { indexSet, offset in
                 items.move(fromOffsets: indexSet, toOffset: offset)
-                //should resave items in that order
             }
             .onDelete { indexSet in
                 items.remove(atOffsets: indexSet)
-                //resave items for that day?
             }
         }
         .onAppear(perform: {

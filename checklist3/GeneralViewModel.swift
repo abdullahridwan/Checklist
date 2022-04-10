@@ -20,7 +20,7 @@ struct DateObject{
 class GeneralViewModel {
     let format =  "YYYY MM dd"
     var dateAndIDs: [String : NSManagedObjectID] = [:]
-    @Published var allDateAndValues: [DateObject] = [DateObject]()
+    @Published var allDateObjects: [DateObject] = [DateObject]()
     
     // Convert Date to String
     func convertDateFormatter(date: Date, format: String) -> String {
@@ -58,7 +58,7 @@ class GeneralViewModel {
     
     // Get all DateAndValues
     func getAllDateAndValues(){
-        allDateAndValues = CoreDataManager.shared.getAllDateAndValues().map { (DateAndValues) -> DateObject in
+        allDateObjects = CoreDataManager.shared.getAllDateAndValues().map { (DateAndValues) -> DateObject in
             return DateObject(id: DateAndValues.objectID, dateString: DateAndValues.dateString ?? "", tasks: getTaskAndStatusesFromString(tasks: DateAndValues.tasks ?? "", statuses: DateAndValues.status ?? ""))
         }
     }
@@ -92,7 +92,7 @@ class GeneralViewModel {
         let dateString = convertDateFormatter(date: date, format: format)
         
         // then search thru the [allDateAndValues] and find the string thing
-        for dav in allDateAndValues {
+        for dav in allDateObjects {
             let val = dav.dateString
             if dateString == val {
                 return dav
@@ -101,7 +101,7 @@ class GeneralViewModel {
         
         // if it doesnt exist, then make a new one.
         createDateAndValueFromDatePressed(date: date, items: [])
-        return allDateAndValues[allDateAndValues.count - 1]
+        return allDateObjects[allDateObjects.count - 1]
     }
     
     // Update a DateAndValue

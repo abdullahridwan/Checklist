@@ -10,12 +10,14 @@ import SwiftUI
 struct showDate: View {
     @State var isPressed: Bool = false
     @State var date: Date
+    //@State var progress: Float
     @Binding var datePressed: Date
+    @State var gvm: GeneralViewModel = GeneralViewModel()
     var body: some View {
         VStack {
             Text(convertDateFormatter(date: date, format: "EEEEE"))
             Text(convertDateFormatter(date: date, format: "dd"))
-            DisplayDate(progress: 0.3)
+            DisplayDate(progress: getProgressForDate())
         }
         .onTapGesture {
             datePressed = date
@@ -39,10 +41,29 @@ struct showDate: View {
     func isEqualTo(date1: Date, date2: Date) -> Bool {
         return convertDateFormatter(date: date1, format: "YYYY MM dd") ==         convertDateFormatter(date: date2, format: "YYYY MM dd")
     }
+    func getProgressForDate() -> Float {
+        //get dateobject from date
+        let dob = gvm.getDateObjectFromDate(date: date)
+        
+        //get progress from dateobject tasks.
+        var count = 0
+        for item in dob.tasks{
+            if item.completion == true {
+                count = count + 1
+            }
+        }
+        
+        if dob.tasks.count != 0 {
+            print(Float(count / dob.tasks.count))
+            return Float(count / dob.tasks.count)
+        }else{
+            return Float(0.0)
+        }
+    }
 }
 
 struct showDate_Previews: PreviewProvider {
     static var previews: some View {
-        showDate(date: Date(), datePressed: .constant(Date()))
+        showDate(date: Date(), datePressed: .constant(Date()), gvm: GeneralViewModel())
     }
 }
