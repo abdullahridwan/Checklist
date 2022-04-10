@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalendarNavBar: View {
     @StateObject var cvm: CalendarViewModel = CalendarViewModel()
+    
     var sevenColumnGrid: [GridItem] = Array(repeating: .init(.flexible()), count: 7)
 
 
@@ -47,12 +48,11 @@ struct CalendarNavBar: View {
                 .padding(.horizontal)
                 .navigationTitle("This Weeks Items")
                 .onAppear(perform: {
-//                    UITableView.appearance().backgroundColor = UIColor.clear
-//                    UITableViewCell.appearance().backgroundColor = UIColor.clear
                     cvm.updateWeekdays()
                     cvm.updateItems()
                 })
                 .onChange(of: cvm.items, perform: {newItems in
+                    cvm.updateDateAndValue(date: cvm.datePressed, items: cvm.items)
                     cvm.save()
                 })
                 .onChange(of: cvm.datePressed, perform: {newDate in
@@ -77,7 +77,10 @@ struct CalendarNavBar: View {
                     })
                     ToolbarItem(placement: .navigationBarTrailing, content: {
                         Button(action: {
+                            print("Appending..")
                             cvm.items.append(TaskAndStatus(task: "", completion: false))
+                            print("Appended")
+                            
                         }, label: {Image(systemName: "plus")})
                     })
                     ToolbarItem(placement: .navigationBarTrailing, content: {

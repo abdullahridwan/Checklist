@@ -31,12 +31,12 @@ struct ListOfItems: View {
     }
 }
 
-struct ListOfItems_Previews: PreviewProvider {
-    static var previews: some View {
-        ListOfItems(items: .constant([
-            TaskAndStatus(task: "Task 1", completion: true),
-            TaskAndStatus(task: "Task 2", completion: true),
-            TaskAndStatus(task: "Task 3", completion: false),
-        ]))
-    }
-}
+//struct ListOfItems_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ListOfItems(items: .constant([
+//            TaskAndStatus(task: "Task 1", completion: true),
+//            TaskAndStatus(task: "Task 2", completion: true),
+//            TaskAndStatus(task: "Task 3", completion: false),
+//        ]))
+//    }
+//}

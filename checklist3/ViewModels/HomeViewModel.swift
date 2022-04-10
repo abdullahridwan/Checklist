@@ -10,11 +10,12 @@ import Foundation
 
 class HomeViewModel: ObservableObject{
     @Published var items: [TaskAndStatus] = [TaskAndStatus]()
-    let clvm: ChecklistViewModel = ChecklistViewModel()
+    //let clvm: ChecklistViewModel = ChecklistViewModel()
     
     init(){
         //Get Values from a date from CoreDataLayer
-        items = clvm.getTasksFromDate(date: Date())
+        //items = clvm.getTasksFromDate(date: Date())
+        items = [TaskAndStatus(task: "some task", completion: false)]
     }
     
 }

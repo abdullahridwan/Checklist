@@ -7,26 +7,27 @@
 
 import Foundation
 
-struct TaskAndStatus: Hashable {
-    var task: String
-    var completion: Bool
-}
+
+
 
 
 class CalendarViewModel: ObservableObject{
     var counter: Int = 0
-    let clvm: ChecklistViewModel = ChecklistViewModel()
+    let format =  "YYYY MM dd"
+    let gvm: GeneralViewModel = GeneralViewModel()
     @Published var datePressed: Date = Date()
+    @Published var dateObjPressed: DateObj? = nil
     @Published var weekdays: [Date] = [Date]()
     @Published var items: [TaskAndStatus] = [TaskAndStatus]()
     @Published var todaysItems: [TaskAndStatus] = [TaskAndStatus]()
     
+
     
-    /// Use Date formatter on some Date Object
-    /// - Parameters:
-    ///   - date: Date
-    ///   - format: String
-    /// - Returns: String
+    func save(){
+        //clvm.save()
+    }
+    
+ 
     func convertDateFormatter(date: Date, format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
@@ -35,9 +36,7 @@ class CalendarViewModel: ObservableObject{
         return dateFormatter.string(from: date)
     }
     
-    /// Get the Days of the week for some given date.
-    /// - Parameter date: Date
-    /// - Returns: [Date]
+
     func getDaysForWeek(date: Date) -> [Date]{
         let calendar = Calendar.current
         let someDate = Calendar.current.date(byAdding: .weekOfYear, value: counter, to: Date())!
@@ -48,18 +47,16 @@ class CalendarViewModel: ObservableObject{
         return someDays
     }
     
-    /// Get the items for the date that the user presses.
-    /// - Parameter date: Date
-    /// - Returns: [TaskAndStatus]
+
     func getItemsForDatePressed(date: Date) -> [TaskAndStatus]{
-        //Get Values from a date from CoreDataLayer
-        return clvm.getTasksFromDate(date: date)
-//        return [
-//            TaskAndStatus(task: convertDateFormatter(date: datePressed, format: "YYYY MM dd"), completion: true),
-//            TaskAndStatus(task: "Water", completion: false),
-//            TaskAndStatus(task: "Protein", completion: false)
-//        ]
+        //use string format to get the respective date object
+        let dateObj = gvm.getDateObjectFromDate(date: date)
         
+        //return the [TaskAndStatus] from date object
+        return dateObj.tasks
+//        return [
+//            TaskAndStatus(task: convertDateFormatter(date: date, format: format), completion: false)
+//        ]
     }
 
     
@@ -67,6 +64,7 @@ class CalendarViewModel: ObservableObject{
     func getTodaysItems(){
         todaysItems = getItemsForDatePressed(date: Date())
     }
+    
     
     // UPDATE Published Values
     enum DateChanges {
@@ -91,6 +89,10 @@ class CalendarViewModel: ObservableObject{
     
     func updateItems(){
         items = getItemsForDatePressed(date: datePressed)
+    }
+    
+    func updateDateAndValue(date: Date, items: [TaskAndStatus]){
+        gvm.updateDateAndValue(date: date, items: items)
     }
     
     func updateWeekdays(){
@@ -122,9 +124,19 @@ class CalendarViewModel: ObservableObject{
     }
     
     /// Save the Items for that day onto the date Pressed
-    func save(){
-        clvm.createDateDatum(date: datePressed, tasks: items)
-    }
+//    func save(){
+//        clvm.saveTasksToDateObj(d: datePressed, tasks: items)
+//    }
+    
+//    func getDateDatum2(d: DateObj) -> DateDatum {
+//        let existingDateDatum = CoreDataManager.shared.getDateDatumByID(dateID: d.id)
+//        if let existingDateDatum = existingDateDatum {
+//            print("got existing date datum")
+//            return existingDateDatum
+//        }
+//        print("Creating new date datum")
+//        return CoreDataManager.shared.createDateDatum(dateID: d.date)
+//    }
     
 
 }

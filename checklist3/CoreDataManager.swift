@@ -2,32 +2,35 @@
 //  CoreDataManager.swift
 //  checklist3
 //
-//  Created by Abdullah Ridwan on 4/3/22.
+//  Created by Abdullah Ridwan on 4/9/22.
 //
 
 import Foundation
 import CoreData
 
 
-class CoreDataManager: ObservableObject{
-    @Published var allDateDatums: [DateDatum] = [DateDatum]()
-    
+class CoreDataManager{
     let persistentContainer: NSPersistentContainer
     static let shared = CoreDataManager()
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     private init() {
-        persistentContainer = NSPersistentContainer(name: "Database")
+        persistentContainer = NSPersistentContainer(name: "DateAndTasks")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Unable to initialize CD Stack \(error)")
             }
         }
-        allDateDatums = getAllDateDatum()
     }
     
-
+    func getByID(tid: NSManagedObjectID) -> DateAndValues? {
+        do{
+            return try viewContext.existingObject(with: tid) as? DateAndValues
+        } catch {
+            return nil
+        }
+    }
     
     func save(){
         do{
@@ -36,59 +39,19 @@ class CoreDataManager: ObservableObject{
             viewContext.rollback()
         }
     }
-    
-    
-    func getAllDateDatum() -> [DateDatum]{
-        let request = NSFetchRequest<DateDatum >(entityName: "DateDatum")
+    func getAllDateAndValues() -> [DateAndValues]{
+        let request = NSFetchRequest<DateAndValues>(entityName: "DateAndValues")
         do{
             return try viewContext.fetch(request)
         } catch {
             return []
         }
     }
-    
-    
-    func getTasksFromDateDatum(dateDatum: DateDatum) -> [TaskDatum]{
-        return dateDatum.tasks?.allObjects as! [TaskDatum]
-    }
-    
-    func createTaskDatum(newTD: TaskDatum){
+    func updateToDo(t: DateAndValues){
         save()
     }
-    func createDateDatum(newDD: DateDatum){
+    func deleteToDo(t: DateAndValues){
+        viewContext.delete(t)
         save()
     }
-    
-    func updateTaskDatum(td: TaskDatum){}
-    func updateDateDatum(){}
-    
-    func deleteTaskDatum(){}
-    func deleteDateDatum(){}
-    
-    //Main Functionst
-//    func save(){
-//        do{
-//            try viewContext.save()
-//        } catch {
-//            viewContext.rollback()
-//        }
-//    }
-//    func getAllDates() -> [InfoModel]{
-//        //make a request
-//        let request = NSFetchRequest<InfoModel>(entityName: "InfoModel")
-//        //execute request
-//        do{
-//            return try viewContext.fetch(request)
-//        } catch {
-//            return []
-//        }
-//    }
-//    func updateToDo(t: InfoModel ){
-//        save()
-//    }
-//
-//    func deleteToDo(t: InfoModel){
-//        viewContext.delete(t)
-//        save()
-//    }
 }
