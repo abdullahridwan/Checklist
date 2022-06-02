@@ -1,5 +1,5 @@
 # To Do
-- Done with app and currently using on my phone. 
+- Done with app and currently using on my phone
 - Add in Gifs on how it looks like
 
 
